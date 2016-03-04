@@ -1,0 +1,39 @@
+.module:after {
+	display: block; height: 0px; visibility: hidden; clear: both; content: "."
+}
+* html .module {
+	height: 1%; overflow: visible
+}
+* + html .module {
+	min-height: 1%
+}
+.breadcrumb {
+	border-bottom: #dedede 1px solid; border-left: #dedede 1px solid; padding-bottom: 5px; margin: 0px; padding-left: 5px; width: 990px; padding-right: 5px; display: block; background: #fff; float: left; height: 21px; overflow: hidden; border-top: #dedede 1px solid; border-right: #dedede 1px solid; padding-top: 5px
+}
+.breadcrumb ul {
+	padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: block; height: 21px; padding-top: 0px
+}
+.breadcrumb ul li {
+	position: relative; padding-bottom: 0px; line-height: 21px; margin: 0px 6px 0px 0px; padding-left: 0px; padding-right: 10px; display: block; background: url(chevron.gif) no-repeat 100% 0px; float: left; height: 21px; font-size: 0.91em; overflow: hidden; padding-top: 0px
+}
+.breadcrumb ul li div.chevronoverlay {
+	z-index: 2; position: absolute; top: 0px; right: 0px
+}
+.breadcrumb ul li span {
+	display: block; overflow: hidden
+}
+.breadcrumb ul li a {
+	position: relative; line-height: 21px; display: block; float: left; height: 21px; overflow: hidden;color: #000;
+}
+.breadcrumb ul li.first a {
+	padding-bottom: 0px; margin-top: 2px; text-indent: -1000em; padding-left: 0px; width: 16px; padding-right: 0px; background: url(iconhome.gif) no-repeat 0px 0px; height: 16px !important; overflow: hidden; padding-top: 0px
+}
+.breadcrumb ul li.first a:hover {
+	background-position: 0px -16px
+}
+.breadcrumb ul li.last {
+	padding-right: 0px; background: none transparent scroll repeat 0% 0%; margin-right: 0px
+}
+.chevronoverlay {
+	width: 13px; display: none; background: url(chevronoverlay.png) no-repeat 100% 0px; height: 20px
+}
