@@ -277,7 +277,7 @@ var map = new L.Map('map', {
     minZoom : 5,
     inertia : false,
     dragging : true,
-    maxBounds: [[60.58351256610522, 73.920234375], [17.145311187950925, 135.3421875]]
+    maxBounds: [[60.58351256610522, 73.920234375], [16.145311187950925, 135.3421875]]
 });
 
 var popup1 = new L.popup({autoPan:true, keepInView:false, zoomAnimation:true,offset:L.point(0, -2) ,autoPanPaddingBottomRight:L.point(10, 10)});
