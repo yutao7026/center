@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.novel.osp.manager.entity.Log;
-import com.novel.osp.manager.entity.PowerData1;
 import com.novel.osp.manager.entity.Station;
 import com.novel.osp.manager.service.CityService;
 import com.novel.osp.manager.service.LogService;
@@ -24,7 +23,7 @@ import com.novel.osp.manager.util.Message;
 @RequestMapping(value = "/station")
 public class StationController extends AbstractController<Station, String> {
 	@Autowired
-	private CityService cityService;
+	private CityService cityService; 
 
 	@Autowired
 	private StationService stationService;

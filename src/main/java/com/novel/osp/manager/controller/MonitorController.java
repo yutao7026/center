@@ -34,7 +34,7 @@ public class MonitorController extends AbstractController<Monitor, Integer> {
 	@Autowired
 	private CityService cityService;
 
-	@Autowired
+	@Autowired 
 	private StationService stationService;
 	
 	@Autowired
@@ -75,12 +75,7 @@ public class MonitorController extends AbstractController<Monitor, Integer> {
 		ServletOutputStream out = null;
 		try {
 			byte[] b = null;
-			List<City> citys = cityService.findAll(null).getContent();
-			List<Station> stations = stationService.getStationByParam(null, null, null);
 			String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".csv";
-			for(Station s : stations){
-				
-			}
 			resp.setHeader("content-type", "application/json");
 			resp.addHeader("content-disposition", "attachment;filename=" + fileName);
 			out = resp.getOutputStream();

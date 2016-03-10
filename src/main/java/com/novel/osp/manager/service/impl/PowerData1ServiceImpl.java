@@ -46,7 +46,6 @@ public class PowerData1ServiceImpl implements PowerData1Service {
 	public static void main(String[] args) {
 		try {
 			Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2016-03-09 12:12:10");
-			Date now = new Date(System.currentTimeMillis() - d.getTime());
 			long s = (System.currentTimeMillis() - d.getTime()) / 1000;
 			long N = s / 3600;
 			s = s % 3600;

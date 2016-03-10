@@ -17,7 +17,7 @@ public class PowerData1 implements Serializable {
 	private String stationId;
 	private String powerstatus;
 	private String devtemp;
-	private String envtemp;
+	private String envtemp; 
 	private String envhum;
 	private String chargesource;
 	private String supplyceel;

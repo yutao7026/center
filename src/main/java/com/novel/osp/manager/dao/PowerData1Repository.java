@@ -16,4 +16,4 @@ public interface PowerData1Repository extends CrudRepository<PowerData1, String>
 	
 	Page<PowerData1> findAll(Specification<PowerData> specification, Pageable pageable);
 
-}  
+}   
