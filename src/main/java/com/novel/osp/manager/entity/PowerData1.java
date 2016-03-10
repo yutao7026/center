@@ -51,7 +51,8 @@ public class PowerData1 implements Serializable {
 	private String recvdatatime;
 	private String devno;
 	private String ac;
-
+	private String pingstatus;
+	private String thdccminvalue;
 	private String voltagesolarceel;
 	private String chargevoltage;
 	private String chargecurrent;
@@ -119,6 +120,8 @@ public class PowerData1 implements Serializable {
 		this.supplyvoltage = supplyvoltage;
 		this.supplycurrent = supplycurrent;
 	}
+	
+	
 
 	public  void t(PowerData d) {
 		this.stationId = d.getStation().getId();
@@ -161,7 +164,33 @@ public class PowerData1 implements Serializable {
 		this.chargecurrent = d.getChargecurrent();
 		this.supplyvoltage = d.getSupplyvoltage();
 		this.supplycurrent = d.getSupplycurrent();
+		this.pingstatus = d.getPingstatus();
+		this.thdccminvalue = d.getThdccminvalue();
 	}
+
+
+	public String getPingstatus() {
+		return pingstatus;
+	}
+
+
+
+	public void setPingstatus(String pingstatus) {
+		this.pingstatus = pingstatus;
+	}
+
+
+
+	public String getThdccminvalue() {
+		return thdccminvalue;
+	}
+
+
+
+	public void setThdccminvalue(String thdccminvalue) {
+		this.thdccminvalue = thdccminvalue;
+	}
+
 
 
 	public String getD() {

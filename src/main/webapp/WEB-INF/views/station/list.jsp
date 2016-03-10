@@ -17,6 +17,7 @@
 				bootbox
 						.dialog({
 							message : "是否确认删除！",
+							className : "dq",
 							title : "<strong>警告</strong>",
 							buttons : {
 								danger : {

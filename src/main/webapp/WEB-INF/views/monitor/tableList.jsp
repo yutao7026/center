@@ -113,6 +113,8 @@ function statusText(type){
 		return "正常状态";
 	}else if(type == "N"){
 		return "报警状态";
+	}else if(type == "X"){
+		return type;
 	}else{
 		return "";
 	}
@@ -198,11 +200,7 @@ function getData(){
 							zbdz: color(obj.color, result[i].station.lat + ", " + result[i].station.lng),
 			                ip: color(obj.color, result[i].station.ip == null? "" : result[i].station.ip),
 			                port: color(obj.color, result[i].station.port == null? "" : result[i].station.port),
-			                
-			                
-			                pingstatus: color(obj.color, result[i].pingstatus == null? "" : result[i].pingstatus),
-			                thdccminvalue: color(obj.color, result[i].thdccminvalue == null? "" : result[i].thdccminvalue)
-			                
+			                thdccminvalue : color(obj.color, result[i].thdccminvalue == null? "" : result[i].thdccminvalue)
 			            };
 					if(currentStation == result[i].stationId && isShow){
 						showDialog(rowObj);
@@ -292,10 +290,10 @@ function getData(){
 		msg += "<br /><fieldset><legend>设备</legend>"
 		msg += "<table width='100%;'>";
 		msg += "<tr height='30px' valign='top'>"
-		msg += "<td>温度：</td><td>"+ o.devtemp +"</td><td>电场：</td><td>"+ o.electricfield +"</td><td>地网电阻：</td><td>"+ o.groundresistance +"</td><td>SD卡</td><td>"+ o.flagSD +"</td>";
+		msg += "<td width='50px'>温度：</td><td align='left'>"+ o.devtemp +"</td><td width='50px'>电场：</td><td>"+ o.electricfield +"</td><td width='100px'>地网电阻：</td><td>"+ o.groundresistance +"</td><td width='50px'>SD卡</td><td>"+ o.flagSD +"</td>";
 		msg += "</tr>";
 		msg += "<tr height='30px' valign='top'>"
-		msg += "<td>接入设备状态：</td><td colspan='7'>"+ o.pingstatus +"</td>";
+		msg += "<td colspan='8'>接入设备状态：" + o.thdccminvalue +"</td>";
 		msg += "</tr>";
 		
 		msg += "</table>";
@@ -336,7 +334,7 @@ function getData(){
 		msg += "</tr>"
 		msg += "<tr height='30px' valign='top'>"
 		msg += "<td>电压（V）</td><td>"+ o.loadvoltage1 +"</td><td>"+ o.loadvoltage2 +"</td><td>"+ o.loadvoltage3 +"</td><td>"+ o.loadvoltage4 +"</td><td>"+ o.loadvoltage5 +"</td>";
-		msg += "<td>"+ o.supplyvoltage +"</td><td>"+ o.chargevoltage +"</td><td>阴值</td><td>"+ o.innervalue1 +"</td><td>"+ o.innervalue2 +"</td><td>"+ o.innervalue3 +"</td><td>"+ o.innervalue4 +"</td>";
+		msg += "<td>"+ o.supplyvoltage +"</td><td>"+ o.chargevoltage +"</td><td>阻值</td><td>"+ o.innervalue1 +"</td><td>"+ o.innervalue2 +"</td><td>"+ o.innervalue3 +"</td><td>"+ o.innervalue4 +"</td>";
 		msg += "</tr>"
 		msg += "</table>"
 		msg += "</td>"
@@ -374,7 +372,7 @@ function getData(){
 </script>
 <style type="text/css">
 	.dqqq{
-		width : 800px;
+		width : 1000px;
 		margin-left:auto; margin-right:auto; 
 		
 	}
@@ -438,13 +436,13 @@ function getData(){
 							<th class="textCenter" style="vertical-align: middle;" data-field="loadcurrent5" data-sortable="true" data-sorter="sorter">负载5电流</th>
 							
 							<th class="textCenter" style="vertical-align: middle;" data-field="innerstatus1" data-sortable="true" data-sorter="sorter">内阻A状态</th>
-							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue1" data-sortable="true" data-sorter="sorter">内阻A阴值</th>
+							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue1" data-sortable="true" data-sorter="sorter">内阻A阻值</th>
 							<th class="textCenter" style="vertical-align: middle;" data-field="innerstatus2" data-sortable="true" data-sorter="sorter">内阻B状态</th>
-							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue2" data-sortable="true" data-sorter="sorter">内阻B阴值</th>
+							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue2" data-sortable="true" data-sorter="sorter">内阻B阻值</th>
 							<th class="textCenter" style="vertical-align: middle;" data-field="innerstatus3" data-sortable="true" data-sorter="sorter">内阻C状态</th>
-							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue3" data-sortable="true" data-sorter="sorter">内阻C阴值</th>
+							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue3" data-sortable="true" data-sorter="sorter">内阻C阻值</th>
 							<th class="textCenter" style="vertical-align: middle;" data-field="innerstatus4" data-sortable="true" data-sorter="sorter">内阻D状态</th>
-							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue4" data-sortable="true" data-sorter="sorter">内阻D阴值</th>
+							<th class="textCenter" style="vertical-align: middle;" data-field="innervalue4" data-sortable="true" data-sorter="sorter">内阻D阻值</th>
 							
 							<th class="textCenter" style="vertical-align: middle;" data-field="flagdoor" data-sortable="true" data-sorter="sorter">门磁</th>
 							<th class="textCenter" style="vertical-align: middle;" data-field="flagIR" data-sortable="true" data-sorter="sorter">红外</th>
@@ -455,9 +453,6 @@ function getData(){
 							<th class="textCenter" style="vertical-align: middle;" data-field="zbdz" data-sortable="true" data-sorter="sorter">坐标</th>
 							<th class="textCenter" style="vertical-align: middle;" data-field="ip" data-sortable="true" data-sorter="sorter">IP地址</th>
 			 				<th class="textCenter" style="vertical-align: middle;" data-field="port" data-sortable="true" data-sorter="sorter">端口号</th>
-							<th class="textCenter" style="vertical-align: middle;" width="300px" data-field="pingstatus" data-sortable="true" data-sorter="sorter">下位机设备ping状态</th>
-							<th class="textCenter" style="vertical-align: middle;" width="300px" data-field="thdccminvalue" data-sortable="true" data-sorter="sorter">冗余数采分钟值数据</th>
-							
 						</tr>
         </thead>
         <tbody>

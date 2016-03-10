@@ -194,7 +194,7 @@
 						popupText += "雷击：" + statusText(result[i].flaglight) + "<br />";
 						popupText += "SD卡：" + sdText(result[i].flagSD) + "<br />";
 						popupText += "最近更新时间：" + (result[i].recvdatatime == null? "" : result[i].recvdatatime) + "<br />";
-						popupText += "当前状态持续时间：" + (result[i].d == null? "" : result[i].d) + "秒<br />";
+						popupText += "当前状态持续时间：" + (result[i].d == null? "" : result[i].d) + "<br />";
 					objs[j].popupText = popupText;
 					
 					break;
@@ -277,7 +277,7 @@ var map = new L.Map('map', {
     minZoom : 5,
     inertia : false,
     dragging : true,
-    maxBounds: [[60.58351256610522, 73.920234375], [16.145311187950925, 135.3421875]]
+    maxBounds: [[65.58351256610522, 73.920234375], [16.145311187950925, 140.3421875]]
 });
 
 var popup1 = new L.popup({autoPan:true, keepInView:false, zoomAnimation:true,offset:L.point(0, -2) ,autoPanPaddingBottomRight:L.point(10, 10)});

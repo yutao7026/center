@@ -1,6 +1,7 @@
 <%@page import="com.novel.osp.manager.util.IConstants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -233,13 +234,16 @@
 							<th class="textCenter" style="vertical-align: middle;">负载5电流</th>
 							
 							<th class="textCenter" style="vertical-align: middle;">内阻A状态</th>
-							<th class="textCenter" style="vertical-align: middle;">内阻A阴值</th>
+							<th class="textCenter" style="vertical-align: middle;">内阻A阻值</th>
 							<th class="textCenter" style="vertical-align: middle;">内阻B状态</th>
-							<th class="textCenter" style="vertical-align: middle;">内阻B阴值</th>
+							<th class="textCenter" style="vertical-align: middle;">内阻B阻值</th>
 							<th class="textCenter" style="vertical-align: middle;">内阻C状态</th>
-							<th class="textCenter" style="vertical-align: middle;">内阻C阴值</th>
+							<th class="textCenter" style="vertical-align: middle;">内阻C阻值</th>
 							<th class="textCenter" style="vertical-align: middle;">内阻D状态</th>
-							<th class="textCenter" style="vertical-align: middle;">内阻D阴值</th>
+							<th class="textCenter" style="vertical-align: middle;">内阻D阻值</th>
+							
+							<th class="textCenter" style="vertical-align: middle;">地阻值</th>
+							<th class="textCenter" style="vertical-align: middle;">电场值</th>
 							
 							<th class="textCenter" style="vertical-align: middle;">门磁</th>
 							<th class="textCenter" style="vertical-align: middle;">红外</th>
@@ -249,8 +253,7 @@
 							<th class="textCenter" style="vertical-align: middle;" width="300px">坐标</th>
 							<th class="textCenter" style="vertical-align: middle;">IP地址</th>
 							<th class="textCenter" style="vertical-align: middle;">端口号</th>
-							<th class="textCenter" style="vertical-align: middle;" width="300px">下位机设备ping状态</th>
-							<th class="textCenter" style="vertical-align: middle;" width="300px">冗余数采分钟值数据</th>
+							<th class="textCenter" style="vertical-align: middle;" width="300px">接入设备状态</th>
 							
 							
 							
@@ -318,6 +321,9 @@
 								<td class="textCenter">${content.innerstatus4}</td>
 								<td class="textCenter">${content.innervalue4}</td>
 								
+								<td class="textCenter">${content.groundresistance}</td>
+								<td class="textCenter">${content.electricfield}</td>
+								
 								
 								<td class="textCenter">
 									<c:if test="${content.flagdoor == 'Y'}">正常状态</c:if>
@@ -343,8 +349,12 @@
 								<td class="textCenter">${content.station.ip}</td>
 								<td class="textCenter">${content.station.port}</td>
 								
-								<td class="textCenter">${content.pingstatus}</td>
-								<td class="textCenter">${content.thdccminvalue}</td>
+								<td class="textCenter" title="${content.thdccminvalue}">
+								${fn:substring(content.thdccminvalue, 0, 20)}
+								<c:if test="${fn:length(content.thdccminvalue) > 20}">
+									...
+								</c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

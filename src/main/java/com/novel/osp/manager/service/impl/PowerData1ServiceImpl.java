@@ -3,6 +3,7 @@ package com.novel.osp.manager.service.impl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.transaction.Transactional;
 
@@ -19,19 +20,20 @@ import com.novel.osp.manager.entity.PowerData1;
 import com.novel.osp.manager.entity.Station;
 import com.novel.osp.manager.service.PowerData1Service;
 
+
 @Service
 @Transactional
 public class PowerData1ServiceImpl implements PowerData1Service {
 
 	@Autowired
 	private PowerData1Repository powerData1Repository;
-	
+
 	@Autowired
 	private StationRepository stationRepository;
-	
+
 	@Autowired
 	private CityRepository cityRepository;
-	
+
 	public PowerData1ServiceImpl() {
 
 	}
@@ -41,25 +43,53 @@ public class PowerData1ServiceImpl implements PowerData1Service {
 		powerData1Repository.save(powerData1);
 	}
 
+	public static void main(String[] args) {
+		try {
+			Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2016-03-09 12:12:10");
+			Date now = new Date(System.currentTimeMillis() - d.getTime());
+			long s = (System.currentTimeMillis() - d.getTime()) / 1000;
+			long N = s / 3600;
+			s = s % 3600;
+			long K = s / 60;
+			s = s % 60;
+			long M = s;
+			System.out.println(N + "小时 " + K + "分钟 " + M + "秒");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 	@Override
 	public Page<PowerData1> findAll(Pageable pageable) {
 		Page<PowerData1> datas = powerData1Repository.findAll(pageable);
-		for(PowerData1 data : datas){
-			if(data.getRecvdatatime() != null){
+		for (Iterator<PowerData1> iterator = datas.iterator(); iterator.hasNext();) {
+			PowerData1 data = iterator.next();
+			if (data.getRecvdatatime() != null) {
 				try {
 					Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(data.getRecvdatatime());
-					data.setD(((System.currentTimeMillis() - d.getTime()) / 1000) + "");
+					long s = (System.currentTimeMillis() - d.getTime()) / 1000;
+					long N = s / 3600;
+					s = s % 3600;
+					long K = s / 60;
+					s = s % 60;
+					long M = s;
+					data.setD(N + "小时 " + K + "分钟 " + M + "秒");
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			Station s = stationRepository.findOne(data.getStationId());
-			if(s != null){
+			if (s != null) {
 				City c = cityRepository.findOne(s.getpId());
 				s.setCity(c);
 				data.setStation(s);
+			}else{
+				iterator.remove();
 			}
+			
 		}
 		return datas;
 	}

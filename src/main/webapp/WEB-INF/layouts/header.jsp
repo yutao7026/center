@@ -66,6 +66,7 @@
 		html += "<br>";
 		bootbox.dialog({
 			message: html,
+			className : "dq",
 			title: "<img alt='' src='${ctx}/static/images/logo.png' height='22px'> <strong>关于&nbsp;&nbsp;&nbsp;&nbsp;中心服务器</strong>",
 			buttons: {
 				main: {
@@ -94,9 +95,9 @@
 								<li <c:if test="${active == '6'}">class="active"</c:if>><a href="${ctx}/monitor">地图监测</a></li>
 								<%
 							}
-							if(purvew.contains("2")){
+							if(purvew.contains("4")){
 								%>
-								<li <c:if test="${active == '8'}">class="active"</c:if>><a href="${ctx}/station">台站管理</a></li>
+								<li <c:if test="${active == '9'}">class="active"</c:if>><a href="${ctx}/monitor/tableList">状态列表</a></li>
 								<%
 							}
 							if(purvew.contains("3")){
@@ -104,11 +105,13 @@
 								<li <c:if test="${active == '2'}">class="active"</c:if>><a href="${ctx}/powerData">历史数据</a></li>
 								<%
 							}
-							if(purvew.contains("4")){
+							if(purvew.contains("2")){
 								%>
-								<li <c:if test="${active == '9'}">class="active"</c:if>><a href="${ctx}/monitor/tableList">状态列表</a></li>
+								<li <c:if test="${active == '8'}">class="active"</c:if>><a href="${ctx}/station">台站管理</a></li>
 								<%
 							}
+							
+							
 							if(purvew.contains("5")){
 								%>
 								<li <c:if test="${active == '5'}">class="active"</c:if>><a href="${ctx}/system/log">日志管理</a></li>
